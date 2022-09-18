@@ -1,4 +1,5 @@
 const { Enclosure } = require("./Enclosure");
+const { HireValidatorProvider } = require("./Employees/Employee")
 
 module.exports.Zoo = class Zoo {
     constructor(location) {
@@ -57,6 +58,14 @@ module.exports.Zoo = class Zoo {
           })
         })
         console.log("animal was healed")
+    }
+    HireEmployee(employee) {
+        if (ValidateEmployee(employee, this)) {
+          this.Employees.push(employee)
+          console.log(`${employee.constructor.name} ${employee.FirstName} was hired`)
+        } else {
+          console.log(`Employee ${employee.FirstName} ${employee.LastName} wasn't hired`)
+        }
     }
     GetZooKeepers() {
         let zooKeepers = [];
