@@ -30,6 +30,34 @@ module.exports.Zoo = class Zoo {
         }
         console.log(`Add ${animal.constructor.name}`)
     }
+    FeedAnimal(time) {
+        const zooKeepers = this.GetZooKeepers();
+        this.enclosures.forEach((enclosure) => {
+          enclosure.animals.forEach((animal) => {
+            const availableZooKeeper = zooKeepers.find(
+              (zooKeeper) => zooKeeper.HasAnimalExperience(animal),
+            )
+            if (availableZooKeeper) {
+              availableZooKeeper.FeedAnimal(time, animal)
+            }
+          })
+        })
+        console.log(`Animal was fed at ${time}`)
+    }
+    HealAnimal() {
+        const veterinarians = this.GetVeterinarians();
+        this.enclosures.forEach((enclosure) => {
+          enclosure.animals.forEach((animal) => {
+            const availableVeterinarian = veterinarians.find(
+              (veterinarian) => veterinarian.HasAnimalExperience(animal),
+            )
+            if (availableVeterinarian && animal.IsSick()) {
+              availableVeterinarian.HealAnimal(animal)
+            }
+          })
+        })
+        console.log("animal was healed")
+    }
     GetZooKeepers() {
         let zooKeepers = [];
         this.employees.forEach((employee) => {
@@ -47,6 +75,15 @@ module.exports.Zoo = class Zoo {
             });
         });
         return animals;
+    }
+    GetVeterinarians() {
+        let veterinarians = [];
+        this.employees.forEach((employee) => {
+            if (employee.constructor.name == "Veterinarian") {
+                veterinarians.push(employee);
+            }
+        });
+        return veterinarians;
     }
 }
     
