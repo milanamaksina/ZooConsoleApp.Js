@@ -12,4 +12,7 @@ module.exports.Animal = class Animal {
             throw new Error("Can't create an instance of Animal abstract class");
         }
     }
+    IsFriendlyWith(animal) {
+        return this.friends.includes(animal.constructor.name);
+    }
 }

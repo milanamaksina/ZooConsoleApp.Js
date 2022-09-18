@@ -5,5 +5,7 @@ module.exports.Enclosure = class Enclosure {
       this.squareFeet = squareFeet;
       this.parentZoo = parentZoo;
     }
-    
+    AddAnimal(animal) {
+        this.animals.push(animal)
+    }
 }
