@@ -1,5 +1,5 @@
 const { Enclosure } = require("./Enclosure");
-const { HireValidatorProvider } = require("./Employees/Employee")
+const { HireValidatorProvader } = require("../Validators/HireValidatorProvader")
 
 module.exports.Zoo = class Zoo {
     constructor(location) {
@@ -28,9 +28,9 @@ module.exports.Zoo = class Zoo {
     AddAnimal(animal) {
         const availableEnclosure = this.FindAvailableEnclosure(animal)
         if (availableEnclosure) {
-          availableEnclosure.AddAnimals(animal)
-          console.log(`Add ${animal.constructor.name}`)
+          availableEnclosure.AddAnimal(animal)
         }
+        console.log(`Add ${animal.constructor.name}`)
     }
     FeedAnimal(time) {
         const zooKeepers = this.GetZooKeepers();
@@ -44,7 +44,7 @@ module.exports.Zoo = class Zoo {
             }
           })
         })
-        console.log(`Animal was fed at ${time}`)
+        console.log(`Animals were fed at ${time}`)
     }
     HealAnimal() {
         const veterinarians = this.GetVeterinarians();
@@ -58,11 +58,12 @@ module.exports.Zoo = class Zoo {
             }
           })
         })
-        console.log("animal was healed")
+        console.log("animals were healed")
     }
     HireEmployee(employee) {
-        if (ValidateEmployee(employee, this)) {
-          this.Employees.push(employee)
+      let provider = new HireValidatorProvader();
+        if (provider.ValidateEmployee(employee, this)) {
+          this.employees.push(employee)
           console.log(`${employee.constructor.name} ${employee.FirstName} was hired`)
         } else {
           console.log(`Employee ${employee.FirstName} ${employee.LastName} wasn't hired`)

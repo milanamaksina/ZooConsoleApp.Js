@@ -1,7 +1,9 @@
 const { ZooKeeperValidator } = require("./ZooKeeperValidator.js");
 const { VeterinarianValidator } = require("./VeterinarianValidator.js");
 
-export default function ValidateEmployee(employee, zoo) {
+module.exports.HireValidatorProvader = class HireValidatorProvader {
+    constructor() {}
+    ValidateEmployee(employee, zoo) {
         if (employee.constructor.name === "ZooKeeper") {
             let validator = new ZooKeeperValidator();
             validator.ValidateEmployee(employee, zoo);
@@ -15,4 +17,5 @@ export default function ValidateEmployee(employee, zoo) {
             return false
         }
         return true;
+    }
 }
