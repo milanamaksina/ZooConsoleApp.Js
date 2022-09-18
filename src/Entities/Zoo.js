@@ -14,8 +14,9 @@ module.exports.Zoo = class Zoo {
     }
     FindAvailableEnclosure(animal){
         let availableEnclosure = this.enclosures.find(
-            (enclosure) => enclosure.animals?.every((item) => item.IsFriendlyWith(animal)) &&
-            animal.requiredSpaceSqFt <= enclosure.squareFeet,
+            (enclosure) =>  animal.requiredSpaceSqFt <= enclosure.squareFeet &&
+            enclosure.animals?.every((item) => item.IsFriendlyWith(animal)) 
+           
         )
         if(availableEnclosure){
             console.log('There is available enclosure')
@@ -28,8 +29,8 @@ module.exports.Zoo = class Zoo {
         const availableEnclosure = this.FindAvailableEnclosure(animal)
         if (availableEnclosure) {
           availableEnclosure.AddAnimals(animal)
+          console.log(`Add ${animal.constructor.name}`)
         }
-        console.log(`Add ${animal.constructor.name}`)
     }
     FeedAnimal(time) {
         const zooKeepers = this.GetZooKeepers();
