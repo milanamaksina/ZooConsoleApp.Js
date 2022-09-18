@@ -9,7 +9,7 @@ module.exports.Animal = class Animal {
         this.friends = [];
         this.isSick = false;
         if (this.constructor == Animal) {
-            throw new Error("Can't create an instanse of Animal abstract class");
+            throw new Error("Can't create an instance of Animal abstract class");
         }
     }
 }
