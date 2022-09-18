@@ -15,4 +15,17 @@ module.exports.Animal = class Animal {
     IsFriendlyWith(animal) {
         return this.friends.includes(animal.constructor.name);
     }
+    Feed(food, zooKeeper) {
+        this.feedTimes.push(new FeedTime(new Date(), zooKeeper));
+        console.log(`Animal was feed by ${zooKeeper.lastName} with ${food} `);
+    }
+    IsSick() {
+        return this.isSick;
+    }
+    AddFeedSchedule(hours) {
+        this.feedSchedule.push(hours);
+    }
+    Heal() {
+        this.isSick = false;
+    }
 }
