@@ -30,7 +30,24 @@ module.exports.Zoo = class Zoo {
         }
         console.log(`Add ${animal.constructor.name}`)
     }
-    
+    GetZooKeepers() {
+        let zooKeepers = [];
+        this.employees.forEach((employee) => {
+            if (employee.constructor.name == "ZooKeeper") {
+                zooKeepers.push(employee);
+            }
+        });
+        return zooKeepers;
+    }
+    GetAnimals() {
+        let animals = [];
+        this.enclosures.forEach((enclosure) => {
+            enclosure.animals.forEach((animal) => {
+                animals.push(animal);
+            });
+        });
+        return animals;
+    }
 }
     
     
