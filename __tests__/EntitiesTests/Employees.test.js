@@ -1,7 +1,6 @@
 const { Parrot } = require("../../src/Entities/Animals/Bird/Parrot")
 const { Veterinarian } = require("../../src/Entities/Employees/Veterinarian");
 const { ZooKeeper } = require("../../src/Entities/Employees/ZooKeeper")
-const {Zoo} = require("../../src/Entities/Zoo")
 
 test('Should be able to add animal experience to veterinarian', () => {
     let veterinarian = new Veterinarian();
