@@ -66,7 +66,7 @@ module.exports.Zoo = class Zoo {
           this.employees.push(employee)
           console.log(`${employee.constructor.name} ${employee.FirstName} was hired`)
         } else {
-          console.log(`Employee ${employee.FirstName} ${employee.LastName} wasn't hired`)
+          console.log("Employee wasn't hired")
         }
     }
     GetZooKeepers() {
